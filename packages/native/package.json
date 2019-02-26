@@ -18,11 +18,15 @@
 		"url": "http://brunobertolini.com"
 	},
 	"scripts": {
+		"lint": "npm-run-all lint:*",
+		"lint:format": "prettier \"src/**/*.{js,jsx,ts,tsx,mdx}\" --write",
+		"lint:ts": "tslint --fix --project .",
 		"docz:dev": "docz dev --native",
 		"docz:build": "docz build --native",
 		"start": "yarn docz:dev"
 	},
 	"peerDependencies": {
+		"react": "^16.8.3",
 		"react-native": "^0.59.0-rc.2",
 		"styled-components": "^4.1.3"
 	},
