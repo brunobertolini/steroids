@@ -1,4 +1,4 @@
 import * as React from 'react'
-import { View } from 'react-native'
+import { View, ViewProps } from 'react-native'
 
-export const Box: React.SFC<{}> = ({ ...props }) => <View {...props} />
+export const Box: React.SFC<ViewProps> = ({ ...props }) => <View {...props} />

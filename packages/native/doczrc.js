@@ -2,10 +2,10 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default {
 	typescript: true,
-	codeSandbox: false,
+	codeSandbox: true,
 	sourcemaps: IS_PROD,
 	propsParser: IS_PROD,
-	title: 'Steroids',
+	title: 'Steroids / Native',
 	menu: ['Components'],
 	htmlContext: {
 		head: {
