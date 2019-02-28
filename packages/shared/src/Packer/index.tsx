@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { omit, pick } from 'ramda'
 
-interface PackerProps {
+export interface PackerProps {
 	container: React.SFC<any>
 	containerProps: string[]
 	sharedProps: string[]

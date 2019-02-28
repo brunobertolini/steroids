@@ -1,0 +1,25 @@
+---
+name: Lazy
+menu: Components
+route: /components/shared/Lazy
+---
+
+import { Props } from 'docz'
+import { Lazy } from './'
+
+# Lazy
+
+Lazy load components using memo and suspense
+
+## Usage
+
+```
+<Lazy
+	from={() => import('./users')}
+	fallback={<Spinner />}
+/>
+```
+
+## Properties
+
+<Props of={Lazy} />
