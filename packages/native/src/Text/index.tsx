@@ -1,21 +1,16 @@
 import * as React from 'react'
 import { Text as BaseText, TextProps as BaseTextProps } from 'react-native'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { bool } from '@steroids/styled'
 
 interface TextCustomProps {
 	uppercase: boolean
 }
 
-const value = (name, prop) => props =>
-	props[name] &&
-	css`
-		${prop}
-	`
-
 export type TextProps = BaseTextProps & TextCustomProps
 
 const TextStyled = styled(BaseText)<TextProps>`
-	${value('uppercase', 'text-transform: uppercase;')}
+	${bool('uppercase', 'text-transform: uppercase;')}
 `
 
 export const Text: React.SFC<TextProps> = ({ children, ...props }) => (
