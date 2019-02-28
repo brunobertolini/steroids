@@ -1,0 +1,69 @@
+---
+name: Packer
+menu: Components
+route: /components/shared/Packer
+---
+
+import { Props } from 'docz'
+import { Packer } from './'
+
+# Packer
+
+Packer is logical component to wraps and manage children and children props. It is used to create more cleaner and powerfull wrapper components, like `Router`, `Grid` etc
+
+## Usage example
+
+```
+const Grid = ({ gap, children }) => {
+	const packerProps = {
+		container: Item,
+		fixedProps: { m: gap },
+		containerProps: ['width', 'flex'],
+		sharedProps: [],
+	}
+
+	return (
+		<Box m={gap}>
+			<Packer {...packerProps}>{children}</Packer>
+		</Box>
+	)
+}
+```
+
+## API
+
+### **contianer**
+
+A container component to wraps each children
+
+### **fixedProps**
+
+This props pass defined props to children container component (Item). So that, if you pass `{margin: 10 }`, it will render `<Item margin={10} />`
+
+### **containerProps**
+
+This enables you to extract props from children and pass to container element.
+
+```
+<Grid>
+	<Box flex={1} />
+</Grid>
+```
+
+Results in:
+
+```
+<Wrapper>
+	<Item flex={1}>
+		<Box />
+	</Item>
+</Wrapper
+```
+
+### **sharedProps**
+
+Keeps this props in children, and copy to container too
+
+## Properties
+
+<Props of={Packer} />
