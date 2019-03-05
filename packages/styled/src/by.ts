@@ -28,7 +28,7 @@ export const to = (name: string, value: any) => (props: any) => {
 		  `
 }
 
-export const alias = (prop: string, name: string, value: any) =>
+export const alias = (prop: string, name?: string, value?: any) =>
 	to(name || prop, value || get(prop))
 
 export const value = (prop: string, val: any) => alias(prop, prop, val)
