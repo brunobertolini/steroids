@@ -100,17 +100,28 @@ export type AlignSelfProps =
 
 // SPACE -----------------------------------------------------------------------
 
+export interface ShortMarginProps {
+	m?: string | number
+	ml?: string | number
+	mr?: string | number
+	mb?: string | number
+	mt?: string | number
+}
+
+export interface ShortPaddingProps {
+	p?: string | number
+	pl?: string | number
+	pr?: string | number
+	pb?: string | number
+	pt?: string | number
+}
+
 export interface MarginProps {
 	margin?: string | number
 	marginLeft?: string | number
 	marginRight?: string | number
 	marginBottom?: string | number
 	marginTop?: string | number
-	m?: string | number
-	ml?: string | number
-	mr?: string | number
-	mb?: string | number
-	mt?: string | number
 }
 
 export interface PaddingProps {
@@ -119,16 +130,12 @@ export interface PaddingProps {
 	paddingRight?: string | number
 	paddingBottom?: string | number
 	paddingTop?: string | number
-	p?: string | number
-	pl?: string | number
-	pr?: string | number
-	pb?: string | number
-	pt?: string | number
 }
 
 export type SpaceProps = MarginProps & PaddingProps
+export type ShortSpaceProps = ShortMarginProps & ShortPaddingProps
 
-// Background ------------------------------------------------------------------
+// BACKGROUND ------------------------------------------------------------------
 
 export interface BackgroundProps {
 	background?: string

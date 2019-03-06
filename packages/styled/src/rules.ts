@@ -15,12 +15,17 @@ export const withText = (props: any) => css`
 	${slug('fontFamily')}
 `
 
+// SPACE -----------------------------------------------------------------------
+
 export const withPadding = (props: any) => css`
+	${alias('padding')}
 	${slug('paddingLeft')}
 	${slug('paddingRight')}
 	${slug('paddingBottom')}
 	${slug('paddingTop')}
-	${alias('padding')}
+`
+
+export const withShortPadding = (props: any) => css`
 	${alias('p', 'padding')}
 	${alias('pl', 'padding-left')}
 	${alias('pr', 'padding-right')}
@@ -29,11 +34,13 @@ export const withPadding = (props: any) => css`
 `
 
 export const withMargin = (props: any) => css`
+	${alias('margin')}
 	${slug('marginLeft')}
 	${slug('marginRight')}
 	${slug('marginBottom')}
 	${slug('marginTop')}
-	${alias('margin')}
+`
+export const withShortMargin = (props: any) => css`
 	${alias('m', 'margin')}
 	${alias('ml', 'margin-left')}
 	${alias('mr', 'margin-right')}
@@ -46,9 +53,19 @@ export const withSpace = (props: any) => css`
 	${withMargin}
 `
 
+export const withShortSpace = (props: any) => css`
+	${withShortPadding}
+	${withShortMargin}
+`
+
+// FLEX ------------------------------------------------------------------------
+
 export const withFlex = (props: any) => css`
 	${alias('flex')}
 `
+
+// BACKGROUND ------------------------------------------------------------------
+
 export const withBackground = (props: any) => css`
 	${alias('background')}
 	${alias('bg', 'background')}
