@@ -1,41 +1,44 @@
 import { css } from 'styled-components'
-import { value, theme, get, alias } from './by'
+import decamelize from 'decamelize'
+import { to, theme, from, alias } from './by'
+
+const slug = (prop: string) => alias(prop, decamelize(prop, '-'))
 
 export const withColor = (props: any) =>
-	value('color', theme('colors', 'color', get('color')))
+	to('color', theme('colors', 'color', from('color')))
 
 export const withText = (props: any) => css`
 	${withColor}
-	${alias('textDecoration', 'text-decoration')}
-	${alias('textTransform', 'text-transform')}
-	${alias('fontSize', 'font-size')}
-	${alias('fontFamily', 'font-family')}
+	${slug('textDecoration')}
+	${slug('textTransform')}
+	${slug('fontSize')}
+	${slug('fontFamily')}
 `
 
 export const withPadding = (props: any) => css`
+	${slug('paddingLeft')}
+	${slug('paddingRight')}
+	${slug('paddingBottom')}
+	${slug('paddingTop')}
 	${alias('padding')}
-	${alias('paddingLeft')}
-	${alias('paddingRight')}
-	${alias('paddingBottom')}
-	${alias('paddingTop')}
 	${alias('p', 'padding')}
-	${alias('pl', 'paddingLeft')}
-	${alias('pr', 'paddingRight')}
-	${alias('pb', 'paddingBottom')}
-	${alias('pt', 'paddingTop')}
+	${alias('pl', 'padding-left')}
+	${alias('pr', 'padding-right')}
+	${alias('pb', 'padding-bottom')}
+	${alias('pt', 'padding-top')}
 `
 
 export const withMargin = (props: any) => css`
+	${slug('marginLeft')}
+	${slug('marginRight')}
+	${slug('marginBottom')}
+	${slug('marginTop')}
 	${alias('margin')}
-	${alias('marginLeft')}
-	${alias('marginRight')}
-	${alias('marginBottom')}
-	${alias('marginTop')}
 	${alias('m', 'margin')}
-	${alias('ml', 'marginLeft')}
-	${alias('mr', 'marginRight')}
-	${alias('mb', 'marginBottom')}
-	${alias('mt', 'marginTop')}
+	${alias('ml', 'margin-left')}
+	${alias('mr', 'margin-right')}
+	${alias('mb', 'margin-bottom')}
+	${alias('mt', 'margin-top')}
 `
 
 export const withSpace = (props: any) => css`
@@ -45,4 +48,8 @@ export const withSpace = (props: any) => css`
 
 export const withFlex = (props: any) => css`
 	${alias('flex')}
+`
+export const withBackground = (props: any) => css`
+	${alias('background')}
+	${alias('bg', 'background')}
 `
