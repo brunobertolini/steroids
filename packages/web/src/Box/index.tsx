@@ -1,17 +1,9 @@
 import styled from 'styled-components'
 
-import {
-	withSpace,
-	SpaceProps,
-	withBackground,
-	BackgroundProps,
-	withText,
-} from '@steroids/styled'
+import { types as t, withAll } from '@steroids/styled'
 
-export type BoxProps = SpaceProps & BackgroundProps
+export type BoxProps = t.AllProps
 
 export const Box = styled.div<BoxProps>`
-	${withText}
-	${withSpace}
-	${withBackground}
+	${withAll}
 `
