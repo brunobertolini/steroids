@@ -1,5 +1,17 @@
-import * as React from 'react'
+import styled from 'styled-components'
 
-export const Box: React.SFC<any> = ({ children, ...props }) => (
-	<div {...props}>{children}</div>
-)
+import {
+	withSpace,
+	SpaceProps,
+	withBackground,
+	BackgroundProps,
+	withText,
+} from '@steroids/styled'
+
+export type BoxProps = SpaceProps & BackgroundProps
+
+export const Box = styled.div<BoxProps>`
+	${withText}
+	${withSpace}
+	${withBackground}
+`
