@@ -1,143 +1,159 @@
-export type GlobalStyleProps = 'inherit' | 'initial' | 'unset'
+import { defaults, slug, alias } from './by'
 
-export type DisplayProps =
-	| 'inline'
-	| 'block'
-	| 'contents'
-	| 'flex'
-	| 'grid'
-	| 'inline-block'
-	| 'inline-flex'
-	| 'inline-grid'
-	| 'inline-table'
-	| 'list-item'
-	| 'run-in'
-	| 'table'
-	| 'table-caption'
-	| 'table-column-group'
-	| 'table-header-group'
-	| 'table-footer-group'
-	| 'table-row-group'
-	| 'table-cell'
-	| 'table-column'
-	| 'table-row'
-	| 'none'
-	| 'initial'
-	| 'inherit'
+export const alignContent = slug('alignContent')
+export const alignItems = slug('alignItems')
+export const alignSelf = slug('alignSelf')
+export const background = slug('background')
+export const backgroundBlendMode = slug('backgroundBlendMode')
+export const backgroundClip = slug('backgroundClip')
+export const backgroundColor = slug('backgroundColor')
+export const backgroundImage = slug('backgroundImage')
+export const backgroundOrigin = slug('backgroundOrigin')
+export const backgroundPosition = slug('backgroundPosition')
+export const backgroundRepeat = slug('backgroundRepeat')
+export const backgroundSize = slug('backgroundSize')
+export const border = slug('border')
+export const borderBottom = slug('borderBottom')
+export const borderBottomColor = slug('borderBottomColor')
+export const borderBottomLeftRadius = slug('borderBottomLeftRadius')
+export const borderBottomRightRadius = slug('borderBottomRightRadius')
+export const borderBottomStyle = slug('borderBottomStyle')
+export const borderBottomWidth = slug('borderBottomWidth')
+export const borderColor = slug('borderColor')
+export const borderLeft = slug('borderLeft')
+export const borderLeftColor = slug('borderLeftColor')
+export const borderLeftStyle = slug('borderLeftStyle')
+export const borderLeftWidth = slug('borderLeftWidth')
+export const borderRadius = slug('borderRadius')
+export const borderRight = slug('borderRight')
+export const borderRightColor = slug('borderRightColor')
+export const borderRightStyle = slug('borderRightStyle')
+export const borderRightWidth = slug('borderRightWidth')
+export const borderStyle = slug('borderStyle')
+export const borderTop = slug('borderTop')
+export const borderTopColor = slug('borderTopColor')
+export const borderTopLeftRadius = slug('borderTopLeftRadius')
+export const borderTopRightRadius = slug('borderTopRightRadius')
+export const borderTopStyle = slug('borderTopStyle')
+export const borderTopWidth = slug('borderTopWidth')
+export const borderWidth = slug('borderWidth')
+export const bottom = slug('bottom')
+export const boxShadow = slug('boxShadow')
+export const boxSizing = defaults('boxSizing', 'border-box')
+export const clear = slug('clear')
+export const color = slug('color')
+export const columnGap = slug('columnGap')
+export const cursor = slug('cursor')
+export const display = slug('display')
+export const flex = slug('flex')
+export const flexBasis = slug('flexBasis')
+export const flexDirection = slug('flexDirection')
+export const flexFlow = slug('flexFlow')
+export const flexGrow = slug('flexGrow')
+export const flexShrink = slug('flexShrink')
+export const flexWrap = slug('flexWrap')
+export const float = slug('float')
+export const font = slug('font')
+export const fontFamily = slug('fontFamily')
+export const fontSize = slug('fontSize')
+export const fontStyle = slug('fontStyle')
+export const fontVariant = slug('fontVariant')
+export const fontWeight = slug('fontWeight')
+export const gap = slug('gap')
+export const grid = slug('grid')
+export const gridArea = slug('gridArea')
+export const gridAutoColumns = slug('gridAutoColumns')
+export const gridAutoFlow = slug('gridAutoFlow')
+export const gridAutoRows = slug('gridAutoRows')
+export const gridColumn = slug('gridColumn')
+export const gridColumnEnd = slug('gridColumnEnd')
+export const gridColumnGap = slug('gridColumnGap')
+export const gridColumnStart = slug('gridColumnStart')
+export const gridGap = slug('gridGap')
+export const gridRow = slug('gridRow')
+export const gridRowEnd = slug('gridRowEnd')
+export const gridRowGap = slug('gridRowGap')
+export const gridRowStart = slug('gridRowStart')
+export const gridTemplate = slug('gridTemplate')
+export const gridTemplateAreas = slug('gridTemplateAreas')
+export const gridTemplateColumns = slug('gridTemplateColumns')
+export const gridTemplateRows = slug('gridTemplateRows')
+export const height = slug('height')
+export const justifyContent = slug('justifyContent')
+export const justifyItems = slug('justifyItems')
+export const justifySelf = slug('justifySelf')
+export const left = slug('left')
+export const letterSpacing = slug('letterSpacing')
+export const lineHeight = slug('lineHeight')
+export const listStyle = slug('listStyle')
+export const listStyleImage = slug('listStyleImage')
+export const listStylePosition = slug('listStylePosition')
+export const listStyleType = slug('listStyleType')
+export const margin = slug('margin')
+export const marginBottom = slug('marginBottom')
+export const marginLeft = slug('marginLeft')
+export const marginRight = slug('marginRight')
+export const marginTop = slug('marginTop')
 
-// FLEX ------------------------------------------------------------------------
+export const marginX = `
+	${alias('marginX', 'margin-left')}
+	${alias('marginX', 'margin-right')}
+`
 
-export type FlexWrapProps = 'nowrap' | 'wrap' | 'wrap-reverse'
+export const marginY = `
+	${alias('marginY', 'margin-top')}
+	${alias('marginY', 'margin-bottom')}
+`
 
-export type FlexDirectionProps =
-	| GlobalStyleProps
-	| 'row'
-	| 'row-reverse'
-	| 'column'
-	| 'column-reverse'
+export const maxHeight = slug('maxHeight')
+export const maxWidth = slug('maxWidth')
+export const minHeight = slug('minHeight')
+export const minWidth = slug('minWidth')
+export const opacity = slug('opacity')
+export const order = slug('order')
+export const overflow = slug('overflow')
+export const overflowX = slug('overflowX')
+export const overflowY = slug('overflowY')
+export const padding = slug('padding')
+export const paddingBottom = slug('paddingBottom')
+export const paddingLeft = slug('paddingLeft')
+export const paddingRight = slug('paddingRight')
+export const paddingTop = slug('paddingTop')
 
-export type AlignItemsProps =
-	| 'normal'
-	| 'stretch'
-	| 'center'
-	| 'start'
-	| 'end'
-	| 'flex-start'
-	| 'flex-end'
-	| 'self-start'
-	| 'self-end'
-	| 'left'
-	| 'right'
-	| 'baseline'
-	| 'first baseline'
-	| 'last baseline'
-	| 'safe center'
-	| 'unsafe center'
+export const paddingX = `
+	${alias('paddingX', 'padding-left')}
+	${alias('paddingX', 'padding-right')}
+`
 
-export type JustifyContentProps =
-	| 'center'
-	| 'start'
-	| 'end'
-	| 'flex-start'
-	| 'flex-end'
-	| 'left'
-	| 'right'
-	| 'baseline'
-	| 'first baseline'
-	| 'last baseline'
-	| 'space-between'
-	| 'space-around'
-	| 'space-evenly'
-	| 'stretch'
-	| 'safe center'
-	| 'unsafe center'
+export const paddingY = `
+	${alias('paddingY', 'padding-top')}
+	${alias('paddingY', 'padding-bottom')}
+`
 
-export type PositionProps =
-	| 'absolute'
-	| 'relative'
-	| 'fixed'
-	| 'static'
-	| 'sticky'
-
-export type AlignSelfProps =
-	| 'auto'
-	| 'normal'
-	| 'center'
-	| 'start'
-	| 'end'
-	| 'self-start'
-	| 'self-end'
-	| 'flex-start'
-	| 'flex-end'
-	| 'left'
-	| 'right'
-	| 'baseline'
-	| 'first baseline'
-	| 'last baseline'
-	| 'stretch'
-	| 'safe center'
-	| 'unsafe center'
-
-// SPACE -----------------------------------------------------------------------
-
-export interface ShortMarginProps {
-	m?: string | number
-	ml?: string | number
-	mr?: string | number
-	mb?: string | number
-	mt?: string | number
-}
-
-export interface ShortPaddingProps {
-	p?: string | number
-	pl?: string | number
-	pr?: string | number
-	pb?: string | number
-	pt?: string | number
-}
-
-export interface MarginProps {
-	margin?: string | number
-	marginLeft?: string | number
-	marginRight?: string | number
-	marginBottom?: string | number
-	marginTop?: string | number
-}
-
-export interface PaddingProps {
-	padding?: string | number
-	paddingLeft?: string | number
-	paddingRight?: string | number
-	paddingBottom?: string | number
-	paddingTop?: string | number
-}
-
-export type SpaceProps = MarginProps & PaddingProps
-export type ShortSpaceProps = ShortMarginProps & ShortPaddingProps
-
-// BACKGROUND ------------------------------------------------------------------
-
-export interface BackgroundProps {
-	background?: string
-	bg?: string
-}
+export const placeContent = slug('placeContent')
+export const placeItems = slug('placeItems')
+export const placeSelf = slug('placeSelf')
+export const pointerEvents = slug('pointerEvents')
+export const position = slug('position')
+export const right = slug('right')
+export const rowGap = slug('rowGap')
+export const textAlign = slug('textAlign')
+export const textDecoration = slug('textDecoration')
+export const textOverflow = slug('textOverflow')
+export const textShadow = slug('textShadow')
+export const textTransform = slug('textTransform')
+export const top = slug('top')
+export const transform = slug('transform')
+export const transformOrigin = slug('transformOrigin')
+export const transition = slug('transition')
+export const transitionDelay = slug('transitionDelay')
+export const transitionDuration = slug('transitionDuration')
+export const transitionProperty = slug('transitionProperty')
+export const transitionTimingFunction = slug('transitionTimingFunction')
+export const userSelect = slug('userSelect')
+export const visibility = slug('visibility')
+export const whiteSpace = slug('whiteSpace')
+export const width = slug('width')
+export const wordBreak = slug('wordBreak')
+export const wordWrap = slug('wordWrap')
+export const zIndex = slug('zIndex')

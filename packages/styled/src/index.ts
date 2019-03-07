@@ -1,3 +1,4 @@
 export * from './by'
-export * from './props'
+export * from './types'
 export * from './rules'
+export * from './props'

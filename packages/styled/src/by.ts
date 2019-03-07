@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
 import { prop as get, path, split } from 'ramda'
+import decamelize from 'decamelize'
 
 const resolve = (value: any) => (props: any): any => {
 	const result = typeof value === 'function' ? value(props) : value
@@ -16,9 +17,10 @@ const parser = (callback: any, value: any) => (props: any) => {
 	return Array.isArray(result) ? result.map(callback) : callback(result)
 }
 
-export const set = (name: string, value: any) => css`
-	${name}: ${value};
-`
+export const set = (name: string, value: any) =>
+	css`
+		${name}: ${value};
+	`
 
 export const responsive = (
 	name: string,
@@ -48,18 +50,25 @@ export const from = (prop: string, callback?: any) =>
 export const alias = (prop: string, name?: string, value?: any) =>
 	to(name || prop, value || from(prop))
 
-export const value = (prop: string, val: any) => alias(prop, prop, val)
-
-export const bool = (prop: string, trueStyles: any, falseStyles: any) => (
+export const bool = (prop: string, trueStyles: any, falseStyles?: any) => (
 	props: any
 ) => (props[prop] ? trueStyles : falseStyles)
+
+export const value = (prop: string, callback: (p: any) => any) => (
+	props: any
+) => props[prop] && callback(props[prop])
 
 export const map = (prop: string, map: any, fallback: any) => (props: any) =>
 	map[from(prop)(props)] || fallback
 
-export const theme = (crumb: string, prop: string, fallback: any) => (
+export const theme = (crumb: string, value: any, fallback?: any) => (
 	props: any
 ) =>
 	path([...split('.', crumb), resolve(value)(props)], props.theme) ||
 	fallback ||
 	value
+
+export const slug = (prop: string) => alias(prop, decamelize(prop, '-'))
+
+export const defaults = (prop: string, fallback: any) => (props: any) =>
+	props[prop] ? slug(prop)(props) : alias(prop, decamelize(prop, '-'), fallback)
