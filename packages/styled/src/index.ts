@@ -1,7 +1,7 @@
 import * as props from './props'
+import * as types from './types'
 
 export * from './by'
-export * from './types'
 export * from './rules'
 
-export { props }
+export { props, types }

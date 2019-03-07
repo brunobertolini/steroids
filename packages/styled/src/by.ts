@@ -58,7 +58,7 @@ export const value = (prop: string, callback: (p: any) => any) => (
 	props: any
 ) => props[prop] && callback(props[prop])
 
-export const map = (prop: string, map: any, fallback: any) => (props: any) =>
+export const map = (prop: string, map: any, fallback?: any) => (props: any) =>
 	map[from(prop)(props)] || fallback
 
 export const theme = (crumb: string, value: any, fallback?: any) => (
