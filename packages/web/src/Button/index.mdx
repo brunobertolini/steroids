@@ -1,0 +1,42 @@
+---
+name: Button
+menu: Components
+route: /components/web/Button
+---
+
+import { Playground, Props } from 'docz'
+import { Button } from './'
+
+# Button
+
+Base component
+
+### Example
+
+<Playground>
+	<Button ml={8} palette="#9c0" radius={'0.28rem'}>
+		Test
+	</Button>
+	<Button ml={8} palette="#9c0" kind="outline">
+		Test
+	</Button>
+	<Button ml={8} palette="red" kind="minimal">
+		Test
+	</Button>
+</Playground>
+
+### Sizes
+
+<Playground>
+	<Button ml={8} size="small">
+		Test
+	</Button>
+	<Button ml={8}>Test</Button>
+	<Button ml={8} size="large">
+		Test
+	</Button>
+</Playground>
+
+## Properties
+
+<Props of={Button} />
