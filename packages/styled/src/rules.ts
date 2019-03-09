@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { to, theme, from, bool } from './by'
+import { to, theme, prop, ifProp, withProp } from './by'
 import * as props from './props'
 
 const px = (value: string | number) =>
@@ -26,8 +26,8 @@ export const withText = css`
     ${props.userSelect}
     ${props.wordBreak}
     ${props.wordWrap}
-    ${bool('uppercase', 'text-transform: uppercase;')}
-    ${to('color', theme('colors', from('color')))}
+    ${ifProp('uppercase', 'text-transform: uppercase;')}
+    ${to('color', theme('colors', prop('color')))}
 `
 
 // SPACE -----------------------------------------------------------------------
@@ -57,27 +57,27 @@ export const withMargin = css`
 `
 
 export const withShortPadding = css`
-    ${to('padding', from('p', scale))}
-    ${to('padding-left', from('px', scale))}
-    ${to('padding-right', from('px', scale))}
-    ${to('padding-top', from('py', scale))}
-    ${to('padding-bottom', from('py', scale))}
-    ${to('padding-left', from('pl', scale))}
-    ${to('padding-right', from('pr', scale))}
-    ${to('padding-top', from('pt', scale))}
-    ${to('padding-bottom', from('pb', scale))}
+    ${to('padding', withProp('p', scale))}
+    ${to('padding-left', withProp('px', scale))}
+    ${to('padding-right', withProp('px', scale))}
+    ${to('padding-top', withProp('py', scale))}
+    ${to('padding-bottom', withProp('py', scale))}
+    ${to('padding-left', withProp('pl', scale))}
+    ${to('padding-right', withProp('pr', scale))}
+    ${to('padding-top', withProp('pt', scale))}
+    ${to('padding-bottom', withProp('pb', scale))}
 `
 
 export const withShortMargin = css`
-    ${to('margin', from('m', scale))}
-    ${to('margin-left', from('mx', scale))}
-    ${to('margin-right', from('mx', scale))}
-    ${to('margin-top', from('my', scale))}
-    ${to('margin-bottom', from('my', scale))}
-    ${to('margin-left', from('ml', scale))}
-    ${to('margin-right', from('mr', scale))}
-    ${to('margin-top', from('mt', scale))}
-    ${to('margin-bottom', from('mb', scale))}
+    ${to('margin', withProp('m', scale))}
+    ${to('margin-left', withProp('mx', scale))}
+    ${to('margin-right', withProp('mx', scale))}
+    ${to('margin-top', withProp('my', scale))}
+    ${to('margin-bottom', withProp('my', scale))}
+    ${to('margin-left', withProp('ml', scale))}
+    ${to('margin-right', withProp('mr', scale))}
+    ${to('margin-top', withProp('mt', scale))}
+    ${to('margin-bottom', withProp('mb', scale))}
 `
 
 export const withSpace = css`
@@ -114,8 +114,8 @@ export const withFlex = css`
 // BACKGROUND ------------------------------------------------------------------
 
 export const withBackground = css`
-    ${to('background', theme('colors', from('background')))}
-    ${to('background', theme('colors', from('bg')))}
+    ${to('background', theme('colors', prop('background')))}
+    ${to('background', theme('colors', prop('bg')))}
     ${props.backgroundBlendMode}
     ${props.backgroundClip}
     ${props.backgroundColor}

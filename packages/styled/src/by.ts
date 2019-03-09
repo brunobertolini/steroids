@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { prop as get, path, split } from 'ramda'
+import { prop, palette, ifProp, withProp, switchProp } from 'styled-tools'
 import decamelize from 'decamelize'
 
 const resolve = (value: any) => (props: any): any => {
@@ -10,11 +10,6 @@ const resolve = (value: any) => (props: any): any => {
 	}
 
 	return result
-}
-
-const parser = (callback: any, value: any) => (props: any) => {
-	const result = resolve(value)(props)
-	return Array.isArray(result) ? result.map(callback) : callback(result)
 }
 
 export const set = (name: string, value: any) =>
@@ -37,38 +32,28 @@ export const responsive = (
 			`
 	)
 
-export const to = (name: string, value: any) => (props: any) => {
+export const to = (name: string, value: any) => (props: object) => {
 	const result = resolve(value)(props)
+
 	return Array.isArray(result)
 		? responsive(name, result, value => set(name, value))
 		: set(name, result)
 }
 
-export const from = (prop: string, callback?: any) =>
-	callback ? parser(callback, get(prop)) : get(prop)
+export const alias = (key: string, name?: string, fallback?: any) =>
+	to(name || key, prop(key, fallback))
 
-export const alias = (prop: string, name?: string, value?: any) =>
-	to(name || prop, value || from(prop))
+export const slug = (key: string, fallback?: any) =>
+	alias(key, decamelize(key, '-'), fallback)
 
-export const bool = (prop: string, trueStyles: any, falseStyles?: any) => (
-	props: any
-) => (props[prop] ? trueStyles : falseStyles)
+export const theme = (path: string, index: any, fallback?: any) => (
+	props: object
+) => {
+	const value = resolve(index)(props)
 
-export const value = (prop: string, callback: (p: any) => any) => (
-	props: any
-) => props[prop] && callback(props[prop])
+	return Array.isArray(value)
+		? value.map(v => prop(`${path}.${v}`, fallback || v))
+		: prop(`theme.${path}.${value}`, fallback || value)(props)
+}
 
-export const map = (prop: string, map: any, fallback?: any) => (props: any) =>
-	map[from(prop)(props)] || fallback
-
-export const theme = (crumb: string, value: any, fallback?: any) => (
-	props: any
-) =>
-	path([...split('.', crumb), resolve(value)(props)], props.theme) ||
-	fallback ||
-	value
-
-export const slug = (prop: string) => alias(prop, decamelize(prop, '-'))
-
-export const defaults = (prop: string, fallback: any) => (props: any) =>
-	props[prop] ? slug(prop)(props) : alias(prop, decamelize(prop, '-'), fallback)
+export { prop, palette, ifProp, withProp, switchProp }

@@ -1,4 +1,4 @@
-import { defaults, slug, alias } from './by'
+import { slug, alias } from './by'
 
 export const alignContent = slug('alignContent')
 export const alignItems = slug('alignItems')
@@ -39,7 +39,7 @@ export const borderTopWidth = slug('borderTopWidth')
 export const borderWidth = slug('borderWidth')
 export const bottom = slug('bottom')
 export const boxShadow = slug('boxShadow')
-export const boxSizing = defaults('boxSizing', 'border-box')
+export const boxSizing = slug('boxSizing', 'border-box')
 export const clear = slug('clear')
 export const color = slug('color')
 export const columnGap = slug('columnGap')
