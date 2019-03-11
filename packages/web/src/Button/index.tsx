@@ -8,26 +8,26 @@ import {
 	prop,
 	slug,
 	theme,
-	ifProp,
 	switchProp,
-	withProp,
 	colors,
 } from '@steroids/styled'
 
 const kinds = {
 	normal: css`
 		${to('background-color', theme('colors', prop('palette')))}
-		color: ${(props: object) =>
-			colors.contrast(theme('colors', prop('palette'))(props))};
+		${to('color:', (props: object) =>
+			colors.contrast(theme('colors', prop('palette'))(props))
+		)};
 	`,
 
 	outline: css`
-		background-color: transparent;
+		${to('border-color', theme('colors', prop('palette')))}
+		${slug('borderStyle', 'solid')};
+		${slug('borderWidth', '1px')};
 		${to('color', theme('colors', prop('palette')))}
 	`,
 
 	minimal: css`
-		background-color: transparent;
 		${to('color', theme('colors', prop('palette')))}
 	`,
 }
@@ -59,22 +59,9 @@ interface ButtonCustomProps {
 export type ButtonProps = t.SpaceProps & ButtonCustomProps
 
 export const Button = styled.button<ButtonProps>`
-	${to(
-		'background-color',
-		ifProp(
-			{ kind: 'normal' },
-			theme('colors', prop('palette', 'white')),
-			'transparent'
-		)
-	)}
+	background-color: transparent;
+	border: none;
 
-	${to(
-		'border-color',
-		ifProp({ kind: 'outline' }, prop('palette', 'transparent'), 'transparent')
-	)};
-
-	${slug('borderStyle', 'solid')};
-	${slug('borderWidth', '1px')};
 	${to('border-radius', theme('radius', prop('radius')))}
 
 	${switchProp('kind', kinds)}
