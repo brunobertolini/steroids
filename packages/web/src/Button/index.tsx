@@ -10,11 +10,15 @@ import {
 	theme,
 	ifProp,
 	switchProp,
+	withProp,
+	colors,
 } from '@steroids/styled'
 
 const kinds = {
 	normal: css`
 		${to('background-color', theme('colors', prop('palette')))}
+		color: ${(props: object) =>
+			colors.contrast(theme('colors', prop('palette'))(props))};
 	`,
 
 	outline: css`
@@ -46,14 +50,24 @@ const sizes = {
 }
 
 interface ButtonCustomProps {
-	size: 'small' | 'medium' | 'large' | number
+	size?: 'small' | 'medium' | 'large' | number
 	radius?: 'round' | 'circle' | 'square' | number
-	kind: 'normal' | 'outline' | 'minimal'
+	kind?: 'normal' | 'outline' | 'minimal'
+	palette?: string
 }
 
 export type ButtonProps = t.SpaceProps & ButtonCustomProps
 
 export const Button = styled.button<ButtonProps>`
+	${to(
+		'background-color',
+		ifProp(
+			{ kind: 'normal' },
+			theme('colors', prop('palette', 'white')),
+			'transparent'
+		)
+	)}
+
 	${to(
 		'border-color',
 		ifProp({ kind: 'outline' }, prop('palette', 'transparent'), 'transparent')
@@ -74,4 +88,5 @@ Button.defaultProps = {
 	kind: 'normal',
 	size: 'medium',
 	radius: 'round',
+	palette: '#EEE',
 }
