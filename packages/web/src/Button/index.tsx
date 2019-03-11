@@ -14,21 +14,23 @@ import {
 
 const kinds = {
 	normal: css`
-		${to('background-color', theme('colors', prop('palette')))}
-		${to('color:', (props: object) =>
-			colors.contrast(theme('colors', prop('palette'))(props))
+		${to('background-color', theme('colors', prop('bg', prop('palette'))))}
+		${to('color', (props: any) =>
+			props.color
+				? theme('colors', prop('color'))(props)
+				: colors.contrast(theme('colors', prop('palette'))(props))
 		)};
 	`,
 
 	outline: css`
-		${to('border-color', theme('colors', prop('palette')))}
+		${to('border-color', theme('colors', prop('borderColor', prop('palette'))))}
 		${slug('borderStyle', 'solid')};
 		${slug('borderWidth', '1px')};
-		${to('color', theme('colors', prop('palette')))}
+		${to('color', theme('colors', prop('color', prop('palette'))))}
 	`,
 
 	minimal: css`
-		${to('color', theme('colors', prop('palette')))}
+		${to('color', theme('colors', prop('color', prop('palette'))))}
 	`,
 }
 
