@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
-import { prop, palette, ifProp, withProp, switchProp } from 'styled-tools'
+import { prop, ifProp, withProp, switchProp } from 'styled-tools'
 import decamelize from 'decamelize'
+import { path, split } from 'ramda'
 
 const resolve = (value: any) => (props: any): any => {
 	const result = typeof value === 'function' ? value(props) : value
@@ -10,6 +11,17 @@ const resolve = (value: any) => (props: any): any => {
 	}
 
 	return result
+}
+
+const getFirst = (keys: string[]) => (props: object) => {
+	for (const key of keys) {
+		const value = path(split('.', key), props)
+		if (value) {
+			return value
+		}
+	}
+
+	return null
 }
 
 export const set = (name: string, value: any) =>
@@ -56,4 +68,15 @@ export const theme = (path: string, index: any, fallback?: any) => (
 		: prop(`theme.${path}.${value}`, fallback || value)(props)
 }
 
-export { prop, palette, ifProp, withProp, switchProp }
+export const palette = (key: any, tone?: any) => (props: object) => {
+	const color =
+		getFirst([key, 'palette'])(props) || prop('theme.palette.primary')(props)
+
+	console.log('color', color)
+	return prop(
+		`theme.palette.${color}.${prop('tone', tone || 0)(props)}`,
+		color
+	)(props)
+}
+
+export { prop, ifProp, withProp, switchProp }
