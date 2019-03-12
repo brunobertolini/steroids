@@ -4,33 +4,29 @@ import {
 	types as t,
 	withSpace,
 	withShortSpace,
+	colors,
 	to,
 	prop,
-	slug,
-	theme,
+	paletteBy,
 	switchProp,
-	colors,
+	withProp,
 } from '@steroids/styled'
 
 const kinds = {
 	normal: css`
-		${to('background-color', theme('colors', prop('bg', prop('palette'))))}
-		${to('color', (props: any) =>
-			props.color
-				? theme('colors', prop('color'))(props)
-				: colors.contrast(theme('colors', prop('palette'))(props))
-		)};
+		${to('background-color', paletteBy('bg'))}
+		${to('color', withProp(paletteBy('color'), colors.contrast))}
 	`,
 
 	outline: css`
-		${to('border-color', theme('colors', prop('borderColor', prop('palette'))))}
-		${slug('borderStyle', 'solid')};
-		${slug('borderWidth', '1px')};
-		${to('color', theme('colors', prop('color', prop('palette'))))}
+		${to('border-color', paletteBy('borderColor'))}
+		${to('border-style', prop('borderStyle', 'solid'))};
+		${to('borderWitdh', prop('borderWidth', '1px'))};
+		${to('color', paletteBy('color'))}
 	`,
 
 	minimal: css`
-		${to('color', theme('colors', prop('color', prop('palette'))))}
+		${to('color', paletteBy('color'))}
 	`,
 }
 
@@ -53,7 +49,7 @@ const sizes = {
 
 interface ButtonCustomProps {
 	size?: 'small' | 'medium' | 'large' | number
-	radius?: 'round' | 'circle' | 'square' | number
+	radius?: 'round' | 'circle' | 'square' | string
 	kind?: 'normal' | 'outline' | 'minimal'
 	palette?: string
 }
@@ -64,7 +60,7 @@ export const Button = styled.button<ButtonProps>`
 	background-color: transparent;
 	border: none;
 
-	${to('border-radius', theme('radius', prop('radius')))}
+	${to('border-radius', prop('radius'))}
 
 	${switchProp('kind', kinds)}
 	${switchProp('size', sizes)}
@@ -74,8 +70,7 @@ export const Button = styled.button<ButtonProps>`
 `
 
 Button.defaultProps = {
+	radius: '0.25rem',
 	kind: 'normal',
 	size: 'medium',
-	radius: 'round',
-	palette: '#EEE',
 }

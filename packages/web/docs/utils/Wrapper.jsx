@@ -1,13 +1,8 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
+import theme from '@steroids/theme-default'
 
-const theme = {
-	palette: {
-		primary: '#F7F7F7',
-	},
-}
-
-const Wrapper = ({ children, props }) => (
+const Wrapper = ({ children }) => (
 	<ThemeProvider theme={theme}>{children}</ThemeProvider>
 )
 
