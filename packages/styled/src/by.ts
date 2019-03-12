@@ -1,82 +1,76 @@
 import { css } from 'styled-components'
-import { prop, ifProp, withProp, switchProp } from 'styled-tools'
 import decamelize from 'decamelize'
+import { switchProp, ifProp } from 'styled-tools'
 import { path, split } from 'ramda'
 
-const resolve = (value: any) => (props: any): any => {
-	const result = typeof value === 'function' ? value(props) : value
-
-	if (Array.isArray(result)) {
-		return result.map(v => resolve(v)(props))
-	}
-
-	return result
-}
-
-const getFirst = (keys: string[]) => (props: object) => {
-	for (const key of keys) {
-		const value = path(split('.', key), props)
-		if (value) {
-			return value
-		}
-	}
-
-	return null
-}
-
-export const set = (name: string, value: any) =>
-	css`
-		${name}: ${value};
-	`
+const set = (name: string, value: any) => css`
+	${name}: ${value};
+`
 
 export const responsive = (
-	name: string,
-	values: any,
-	callback: (p: any) => any
+	values: any[],
+	callback: (v: any, s: string) => string
 ) => (props: any) =>
 	[...(props.theme.breackpoints || [0])].map(
-		(size, index) =>
+		(size: string, index: number) =>
 			values[index] &&
 			css`
 				@media (min-width: ${size}) {
-					${callback(values[index])}
+					${callback(values[index], size)}
 				}
 			`
 	)
 
+export const prop = (key: string, defaultValue?: any) => (props: object) => {
+	const value = path(split('.', key), props)
+
+	if (value === undefined && defaultValue !== undefined) {
+		return typeof defaultValue === 'function'
+			? defaultValue(props)
+			: defaultValue
+	}
+
+	return value
+}
+
+export const withProp = (key: any, callback: any) => (props: object) => {
+	const value = typeof key === 'string' ? prop(key)(props) : key(props)
+
+	if (value === undefined) {
+		return
+	}
+
+	return Array.isArray(value) ? value.map(callback) : callback(value)
+}
+
 export const to = (name: string, value: any) => (props: object) => {
-	const result = resolve(value)(props)
+	const result = typeof value === 'string' ? prop(value)(props) : value(props)
+
+	if (result === undefined) {
+		return
+	}
 
 	return Array.isArray(result)
-		? responsive(name, result, value => set(name, value))
+		? responsive(result, (v: any, size?: string): any => set(name, value))
 		: set(name, result)
 }
 
-export const alias = (key: string, name?: string, fallback?: any) =>
-	to(name || key, prop(key, fallback))
+export const alias = (key: string, name?: string) =>
+	to(name || decamelize(key, '-'), prop(key))
 
-export const slug = (key: string, fallback?: any) =>
-	alias(key, decamelize(key, '-'), fallback)
+export const palette = (key: any, tone?: number) => (props: object): any => {
+	const value = typeof key === 'string' ? key : key(props)
 
-export const theme = (path: string, index: any, fallback?: any) => (
-	props: object
-) => {
-	const value = resolve(index)(props)
+	if (Array.isArray(value)) {
+		return value.map(v => palette(v)(props))
+	}
 
-	return Array.isArray(value)
-		? value.map(v => prop(`${path}.${v}`, fallback || v))
-		: prop(`theme.${path}.${value}`, fallback || value)(props)
+	const result = prop(`theme.palette.${value}`, value)(props)
+
+	return Array.isArray(result) ? result[prop('tone', tone || 0)(props)] : result
 }
 
-export const palette = (key: any, tone?: any) => (props: object) => {
-	const color =
-		getFirst([key, 'palette'])(props) || prop('theme.palette.primary')(props)
+export const paletteBy = (key: string) =>
+	palette(prop(key, prop('palette', 'primary')))
 
-	console.log('color', color)
-	return prop(
-		`theme.palette.${color}.${prop('tone', tone || 0)(props)}`,
-		color
-	)(props)
-}
-
-export { prop, ifProp, withProp, switchProp }
+export { switchProp, ifProp }

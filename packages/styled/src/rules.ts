@@ -1,11 +1,11 @@
 import { css } from 'styled-components'
-import { to, theme, prop, ifProp, withProp } from './by'
+import { to, prop, ifProp, withProp, palette } from './by'
 import * as props from './props'
 
 const px = (value: string | number) =>
 	Array.isArray(value) ? value.map(v => `${v}px`) : `${value}px`
 
-const scale = (index: number) => theme('scale', index, px(index))
+const scale = (index: number) => px(index)
 
 // TEXT ------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ export const withText = css`
     ${props.wordBreak}
     ${props.wordWrap}
     ${ifProp('uppercase', 'text-transform: uppercase;')}
-    ${to('color', theme('colors', prop('color')))}
+    ${to('color', palette(prop('color')))}
 `
 
 // SPACE -----------------------------------------------------------------------
@@ -114,8 +114,8 @@ export const withFlex = css`
 // BACKGROUND ------------------------------------------------------------------
 
 export const withBackground = css`
-    ${to('background', theme('colors', prop('background')))}
-    ${to('background', theme('colors', prop('bg')))}
+    ${to('background', palette(prop('background')))}
+    ${to('background', palette(prop('bg')))}
     ${props.backgroundBlendMode}
     ${props.backgroundClip}
     ${props.backgroundColor}
