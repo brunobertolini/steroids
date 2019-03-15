@@ -21,7 +21,7 @@ const kinds = {
 	outline: css`
 		${to('border-color', paletteBy('borderColor'))}
 		${to('border-style', prop('borderStyle', 'solid'))};
-		${to('borderWitdh', prop('borderWidth', '1px'))};
+		${to('border-width', prop('borderWidth', '1px'))};
 		${to('color', paletteBy('color'))}
 	`,
 
