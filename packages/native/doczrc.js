@@ -6,6 +6,7 @@ export default {
 	sourcemaps: IS_PROD,
 	propsParser: IS_PROD,
 	title: 'Steroids / Native',
+	wrapper: 'docs/utils/Wrapper.jsx',
 	menu: ['Components'],
 	htmlContext: {
 		head: {
