@@ -1,0 +1,16 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"declaration": true,
+		"sourceMap": false,
+		"outDir": "dist",
+		"rootDir": "src",
+		"typeRoots": ["node_modules/@types", "src/types"],
+		"baseUrl": "src",
+		"paths": {
+			"@steroids/universal": ["@steroids/web"]
+		}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules/**"]
+}

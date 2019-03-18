@@ -1,0 +1,14 @@
+{
+	"name": "@steroids/universal",
+	"version": "0.1.0",
+	"main": "index.js",
+	"umd:main": "index.js",
+	"module": "index.js",
+	"source": "index.js",
+	"license": "MIT",
+	"author": {
+		"name": "Bruno Bertolini",
+		"email": "dev@brunobertolini.com",
+		"url": "http://brunobertolini.com"
+	}
+}
