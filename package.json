@@ -7,7 +7,8 @@
 		"setup:bs": "lerna bootstrap",
 		"lint": "lerna run --parallel lint",
 		"build": "lerna run --parallel lib:build",
-		"release": "lerna publish --conventional-commits"
+		"release": "lerna publish --conventional-commits",
+		"prerelease": "lerna publish --conventional-commits prerelease --preid"
 	},
 	"workspaces": [
 		"packages/*"
