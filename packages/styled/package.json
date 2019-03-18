@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/styled",
-	"version": "0.1.0",
+	"version": "0.0.1-gamma.0",
 	"description": "Styled Helpers",
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",

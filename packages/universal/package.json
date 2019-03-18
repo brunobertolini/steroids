@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/universal",
-	"version": "0.1.0",
+	"version": "0.0.1-gamma.0",
 	"main": "index.js",
 	"umd:main": "index.js",
 	"module": "index.js",
