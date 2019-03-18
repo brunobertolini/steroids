@@ -5,7 +5,9 @@
 		"setup": "npm-run-all setup:*",
 		"setup:clean": "lerna clean -y",
 		"setup:bs": "lerna bootstrap",
-		"lint": "lerna run lint"
+		"lint": "lerna run --parallel lint",
+		"build": "lerna run --parallel lib:build",
+		"release": "lerna publish --conventional-commits"
 	},
 	"workspaces": [
 		"packages/*"
