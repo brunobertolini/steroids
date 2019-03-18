@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",
 	"module": "dist/index.m.js",
-	"source": "src/index.js",
+	"source": "src/index.ts",
 	"license": "MIT",
 	"files": [
 		"dist/",
@@ -21,12 +21,13 @@
 		"lint": "npm-run-all lint:*",
 		"lint:format": "prettier \"src/**/*.{js,jsx,ts,tsx,mdx}\" --write",
 		"lint:ts": "tslint --fix --project .",
-		"docz:dev": "docz dev --native",
-		"docz:build": "docz build --native",
-		"start": "yarn docz:dev"
+		"lib:dev": "microbundle watch --jsx react-native",
+		"lib:build": "microbundle build --jsx react-native",
+		"start": "yarn docz:dev",
+		"dev": "yarn lib:dev",
+		"build": "yarn lib:build && yarn docz:build"
 	},
 	"peerDependencies": {
-		"ramda": "^0.26.1",
 		"react": "^16.8.3",
 		"react-native": "^0.59.0-rc.2",
 		"styled-components": "^4.1.3"
