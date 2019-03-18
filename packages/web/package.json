@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",
 	"module": "dist/index.m.js",
-	"source": "src/index.js",
+	"source": "src/index.ts",
 	"license": "MIT",
 	"files": [
 		"dist/",
@@ -23,10 +23,13 @@
 		"lint:ts": "tslint --fix --project .",
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
-		"start": "yarn docz:dev"
+		"lib:dev": "microbundle watch --jsx react",
+		"lib:build": "microbundle build --jsx react",
+		"start": "yarn docz:dev",
+		"dev": "yarn lib:dev",
+		"build": "yarn lib:build && yarn docz:build"
 	},
 	"peerDependencies": {
-		"ramda": "^0.26.1",
 		"react": "^16.8.3",
 		"styled-components": "^4.1.3"
 	},
