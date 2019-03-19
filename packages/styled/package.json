@@ -36,5 +36,6 @@
 		"decamelize": "^3.0.0",
 		"polished": "^3.0.3",
 		"styled-tools": "^1.7.1"
-	}
+	},
+	"gitHead": "77323260e5fb08232a96b00e8cb271564bc4850d"
 }

@@ -35,5 +35,6 @@
 	},
 	"devDependencies": {
 		"@steroids/styled": "^0.0.1-gamma.0"
-	}
+	},
+	"gitHead": "77323260e5fb08232a96b00e8cb271564bc4850d"
 }
