@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/components",
-	"version": "0.0.1-gamma.0",
+	"version": "0.0.1-gamma.1",
 	"description": "Universal React UI Kit",
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",
@@ -35,13 +35,13 @@
 		"styled-components": "^4.1.3"
 	},
 	"devDependencies": {
-		"@steroids/web": "^0.0.1-gamma.0",
+		"@steroids/web": "^0.0.1-gamma.1",
 		"react-art": "^16.8.3",
 		"react-native-web": "^0.10.0"
 	},
 	"dependencies": {
-		"@steroids/styled": "^0.0.1-gamma.0",
-		"@steroids/universal": "^0.0.1-gamma.0"
+		"@steroids/styled": "^0.0.1-gamma.1",
+		"@steroids/universal": "^0.0.1-gamma.1"
 	},
 	"gitHead": "77323260e5fb08232a96b00e8cb271564bc4850d"
 }

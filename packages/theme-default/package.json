@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/theme-default",
-	"version": "0.0.1-gamma.0",
+	"version": "0.0.1-gamma.1",
 	"description": "Steroids default theme",
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",
