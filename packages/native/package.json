@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/native",
-	"version": "0.0.1-gamma.2",
+	"version": "0.0.1-gamma.3",
 	"description": "React Native UI Kit",
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",

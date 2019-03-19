@@ -1,6 +1,6 @@
 {
 	"name": "@steroids/web",
-	"version": "0.0.1-gamma.1",
+	"version": "0.0.1-gamma.3",
 	"description": "Shared components",
 	"main": "dist/index.js",
 	"umd:main": "dist/index.umd.js",
